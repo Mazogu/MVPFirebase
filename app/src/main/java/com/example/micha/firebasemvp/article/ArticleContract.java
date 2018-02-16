@@ -9,7 +9,7 @@ import com.example.micha.firebasemvp.utils.BaseView;
 
 public interface ArticleContract {
     interface AView extends BaseView{
-
+        void logout();
     }
 
     interface APresenter extends BasePresenter<AView> {

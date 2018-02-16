@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.MVie
         presenter.attachView(this);
         if(presenter.checkLogin()){
             if(getIntent() != null){
-                startActivity(getIntent());
+                //startActivity(getIntent());
             }
             Intent intent = new Intent(getApplicationContext(), MovieActivity.class);
             startActivity(intent);

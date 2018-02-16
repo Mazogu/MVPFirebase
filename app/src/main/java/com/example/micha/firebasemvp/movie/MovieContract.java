@@ -10,10 +10,7 @@ import com.example.micha.firebasemvp.utils.BaseView;
 
 public interface MovieContract {
     interface MoView extends BaseView{
-
         void logout();
-
-        void getLoginStatus(boolean b);
     }
 
     interface MoPresenter extends BasePresenter<MoView> {
@@ -21,7 +18,5 @@ public interface MovieContract {
         void signOut();
 
         void addMovie(Movie movie);
-
-        void checkLogin();
     }
 }

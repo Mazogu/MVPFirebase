@@ -13,7 +13,6 @@ public interface MainContract {
     }
 
     interface MPresenter extends BasePresenter<MView>{
-        boolean checkLogin();
         void createUser(String email, String password);
         void login(String email, String password);
     }

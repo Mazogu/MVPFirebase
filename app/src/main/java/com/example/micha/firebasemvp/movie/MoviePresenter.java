@@ -41,8 +41,8 @@ public class MoviePresenter implements MovieContract.MoPresenter,LoginAuthentica
     }
 
     @Override
-    public void checkLogin() {
-        view.getLoginStatus(authenticator.checkLogin());
+    public boolean checkLogin() {
+        return authenticator.checkLogin();
     }
 
     @Override

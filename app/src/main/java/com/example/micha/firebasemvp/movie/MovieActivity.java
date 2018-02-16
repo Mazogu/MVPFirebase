@@ -32,7 +32,10 @@ public class MovieActivity extends AppCompatActivity implements MovieContract.Mo
     protected void onStart() {
         super.onStart();
         presenter.attachView(this);
-        presenter.checkLogin();
+        if(!presenter.checkLogin()){
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -61,11 +64,4 @@ public class MovieActivity extends AppCompatActivity implements MovieContract.Mo
         startActivity(intent);
     }
 
-    @Override
-    public void getLoginStatus(boolean b) {
-        if(!b){
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
-        }
-    }
 }

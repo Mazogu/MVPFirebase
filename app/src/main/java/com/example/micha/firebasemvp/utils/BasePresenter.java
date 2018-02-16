@@ -5,6 +5,7 @@ package com.example.micha.firebasemvp.utils;
  */
 
 public interface BasePresenter<V extends BaseView> {
-    public void attachView(V view);
-    public void detachView();
+    void attachView(V view);
+    void detachView();
+    boolean checkLogin();
 }

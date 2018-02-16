@@ -91,4 +91,5 @@ public class LoginAuthenticator {
     public interface LogoutFacilitator{
         void logout();
     }
+
 }
