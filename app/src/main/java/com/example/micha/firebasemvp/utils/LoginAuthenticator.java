@@ -19,9 +19,15 @@ public class LoginAuthenticator {
     private FirebaseAuth auth;
     private FirebaseUser user;
     private LoginFacilitator facilitator;
+    private LogoutFacilitator logout;
 
     public LoginAuthenticator(LoginFacilitator facilitator) {
         this.facilitator = facilitator;
+        auth = FirebaseAuth.getInstance();
+    }
+
+    public LoginAuthenticator(LogoutFacilitator logout){
+        this.logout = logout;
         auth = FirebaseAuth.getInstance();
     }
 
@@ -70,7 +76,19 @@ public class LoginAuthenticator {
         });
     }
 
+    public void logout() {
+        auth.signOut();
+        user = auth.getCurrentUser();
+        if(user == null){
+            logout.logout();
+        }
+    }
+
     public interface LoginFacilitator {
         void sendResult(boolean result);
+    }
+
+    public interface LogoutFacilitator{
+        void logout();
     }
 }

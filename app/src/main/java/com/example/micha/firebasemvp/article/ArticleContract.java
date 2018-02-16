@@ -8,11 +8,11 @@ import com.example.micha.firebasemvp.utils.BaseView;
  */
 
 public interface ArticleContract {
-    public interface AView extends BaseView{
+    interface AView extends BaseView{
 
     }
 
-    public interface APresenter extends BasePresenter<AView> {
+    interface APresenter extends BasePresenter<AView> {
 
     }
 }

@@ -8,11 +8,11 @@ import com.example.micha.firebasemvp.utils.BaseView;
  */
 
 public interface MainContract {
-    public interface MView extends BaseView{
+    interface MView extends BaseView{
         void loginComplete(boolean isLoggedIn);
     }
 
-    public interface MPresenter extends BasePresenter<MView>{
+    interface MPresenter extends BasePresenter<MView>{
         boolean checkLogin();
         void createUser(String email, String password);
         void login(String email, String password);

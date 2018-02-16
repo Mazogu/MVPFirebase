@@ -57,7 +57,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" +
+        return "MovieActivity{" +
                 "title='" + title + '\'' +
                 ", director='" + director + '\'' +
                 ", genre='" + genre + '\'' +

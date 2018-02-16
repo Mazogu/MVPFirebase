@@ -1,5 +1,6 @@
 package com.example.micha.firebasemvp.movie;
 
+import com.example.micha.firebasemvp.model.Movie;
 import com.example.micha.firebasemvp.utils.BasePresenter;
 import com.example.micha.firebasemvp.utils.BaseView;
 
@@ -8,11 +9,19 @@ import com.example.micha.firebasemvp.utils.BaseView;
  */
 
 public interface MovieContract {
-    public interface MoView extends BaseView{
+    interface MoView extends BaseView{
 
+        void logout();
+
+        void getLoginStatus(boolean b);
     }
 
-    public interface MoPresenter extends BasePresenter<BaseView> {
+    interface MoPresenter extends BasePresenter<MoView> {
 
+        void signOut();
+
+        void addMovie(Movie movie);
+
+        void checkLogin();
     }
 }

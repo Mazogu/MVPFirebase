@@ -1,14 +1,14 @@
 package com.example.micha.firebasemvp.main;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.micha.firebasemvp.R;
-import com.example.micha.firebasemvp.utils.LoginAuthenticator;
+import com.example.micha.firebasemvp.movie.MovieActivity;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MView{
 
@@ -21,20 +21,21 @@ public class MainActivity extends AppCompatActivity implements MainContract.MVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        presenter = new MainPresenter();
-        presenter.attachView(this);
         emailText = findViewById(R.id.username);
         passwordText = findViewById(R.id.password);
+        presenter = new MainPresenter();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        presenter.attachView(this);
         if(presenter.checkLogin()){
-            Log.d(TAG, "onStart: You're logged in already");
-        }
-        else{
-            Log.d(TAG, "onStart: Nope");
+            if(getIntent() != null){
+                startActivity(getIntent());
+            }
+            Intent intent = new Intent(getApplicationContext(), MovieActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -67,10 +68,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.MVie
     @Override
     public void loginComplete(boolean isLoggedIn) {
         if(isLoggedIn){
-            Log.d(TAG, "loginComplete: You're logged in");
+            Intent intent = new Intent(getApplicationContext(),MovieActivity.class);
+            startActivity(intent);
         }
         else{
-            Log.d(TAG, "loginComplete: Login failed");
+            Toast.makeText(this, "loginComplete: Login failed", Toast.LENGTH_SHORT).show();
         }
     }
 }
