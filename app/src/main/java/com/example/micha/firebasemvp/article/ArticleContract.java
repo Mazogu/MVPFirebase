@@ -13,6 +13,6 @@ public interface ArticleContract {
     }
 
     interface APresenter extends BasePresenter<AView> {
-
+        void signOut();
     }
 }

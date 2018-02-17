@@ -66,7 +66,7 @@ public class ArticleActivity extends AppCompatActivity implements ArticleContrac
     }
 
     public void logOut(View view) {
-        presenter.logout();
+        presenter.signOut();
     }
 
     @Override

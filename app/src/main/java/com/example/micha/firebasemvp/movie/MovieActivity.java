@@ -3,6 +3,7 @@ package com.example.micha.firebasemvp.movie;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import com.example.micha.firebasemvp.main.MainActivity;
 
 public class MovieActivity extends AppCompatActivity implements MovieContract.MoView{
 
+    private static final String TAG = MovieActivity.class.getSimpleName();
     private MoviePresenter presenter;
 
     private EditText titleText,directorText,genreText,yearText,ratingText;

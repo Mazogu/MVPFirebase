@@ -14,6 +14,7 @@ public class ArticlePresenter implements ArticleContract.APresenter,LoginAuthent
     @Override
     public void attachView(ArticleContract.AView view) {
         this.view = view;
+        authenticator = new LoginAuthenticator(this);
     }
 
     @Override
@@ -28,7 +29,11 @@ public class ArticlePresenter implements ArticleContract.APresenter,LoginAuthent
 
     @Override
     public void logout() {
-        authenticator.logout();
         view.logout();
+    }
+
+    @Override
+    public void signOut() {
+        authenticator.logout();
     }
 }

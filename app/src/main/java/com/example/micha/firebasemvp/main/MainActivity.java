@@ -3,11 +3,13 @@ package com.example.micha.firebasemvp.main;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.micha.firebasemvp.R;
+import com.example.micha.firebasemvp.article.ArticleActivity;
 import com.example.micha.firebasemvp.movie.MovieActivity;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MView{
@@ -32,10 +34,23 @@ public class MainActivity extends AppCompatActivity implements MainContract.MVie
         presenter.attachView(this);
         if(presenter.checkLogin()){
             if(getIntent() != null){
-                //startActivity(getIntent());
+                String code = getIntent().getStringExtra("article");
+                if(code != null){
+                    Log.d(TAG, "onStart: What happened?");
+                    Intent intent = new Intent(getApplicationContext(),ArticleActivity.class);
+                    intent.putExtra("article", code);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), MovieActivity.class);
+                    startActivity(intent);
+                }
+
             }
-            Intent intent = new Intent(getApplicationContext(), MovieActivity.class);
-            startActivity(intent);
+            else {
+                Intent intent = new Intent(getApplicationContext(), MovieActivity.class);
+                startActivity(intent);
+            }
         }
     }
 
